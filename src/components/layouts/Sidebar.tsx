@@ -65,6 +65,9 @@ export function Sidebar() {
             <li key={item.to}>
               <NavLink
                 to={item.to}
+                onClick={() => {
+                if (window.innerWidth < 768) setSidebarOpen(false);
+                }}
                 className={({ isActive }) =>
                   cn(
                     'flex items-center gap-3 rounded-2xl px-3 py-2.5 text-sm font-bold transition-all duration-150 border-2',
@@ -111,8 +114,7 @@ export function Sidebar() {
 
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
-        className="absolute -right-3.5 top-20 hidden h-7 w-7 items-center justify-center rounded-xl border-2 border-ink bg-yellow shadow-brutal-sm hover:shadow-brutal md:flex"
-      >
+        className="absolute -right-3.5 top-20 flex h-7 w-7 items-center justify-center rounded-xl border-2 border-ink bg-yellow shadow-brutal-sm hover:shadow-brutal"      >
         <ChevronLeft className={cn('h-4 w-4 transition-transform', !sidebarOpen && 'rotate-180')} />
       </button>
     </aside>

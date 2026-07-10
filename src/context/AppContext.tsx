@@ -90,8 +90,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<AppSettings>(() =>
     getFromStorage(STORAGE_KEYS.SETTINGS, DEFAULT_SETTINGS)
   );
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [deletedStack, setDeletedStack] = useState<DeletedItem[]>([]);
+  const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth >= 768);  const [deletedStack, setDeletedStack] = useState<DeletedItem[]>([]);
   const pendingUpdates = useRef<Map<string, number>>(new Map());
 
   const loadData = useCallback(async () => {
